@@ -20,7 +20,7 @@ def keyboard(page: ft.Page):
             padding=5,
             border_radius=20,
             bgcolor=ft.colors.WHITE,
-            margin=ft.margin.only(bottom=50),
+            margin=ft.margin.only(bottom=50, top=50),
             content=ft.Text(
                 value=letter,
                 font_family="MADE_TOMMY_BOLD",
