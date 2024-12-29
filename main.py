@@ -48,13 +48,17 @@ def main(page: ft.Page):
 
     main_container = ft.Container(
         alignment=ft.alignment.center,
+        expand=True,
+        padding=ft.padding.only(left=10, right=10),
         content=ft.Column(
-            [
+            controls=[
                 main_container_theme,
                 main_container_game,
                 main_container_teclado
             ],
-            alignment=ft.MainAxisAlignment.CENTER
+            alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+            expand=True
+            
         ),
     )
 
