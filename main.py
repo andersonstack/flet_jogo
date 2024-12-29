@@ -14,6 +14,50 @@ def main(page: ft.Page):
         )
     )
 
-    page.add()
+    main_container_theme = ft.Text(
+        value="Jogo da Forca",
+        color=ft.colors.WHITE,
+        size=25,
+        weight=ft.FontWeight.BOLD,
+    )
+
+    main_container_game = ft.Container(
+        bgcolor=ft.colors.OUTLINE_VARIANT,
+        content=ft.Column(
+            [
+                ft.Text(
+                    value="Container da forca",
+                    color=ft.colors.WHITE,
+                    size=25,
+                    weight=ft.FontWeight.BOLD,),
+            ]
+        ),
+    )
+
+    main_container_teclado = ft.Container(
+        content=ft.Column(
+            [
+                ft.Text(
+                    value="Container do teclado",
+                    color=ft.colors.WHITE,
+                    size=25,
+                    weight=ft.FontWeight.BOLD,),
+            ]
+        ),
+    )
+
+    main_container = ft.Container(
+        alignment=ft.alignment.center,
+        content=ft.Column(
+            [
+                main_container_theme,
+                main_container_game,
+                main_container_teclado
+            ],
+            alignment=ft.MainAxisAlignment.CENTER
+        ),
+    )
+
+    page.add(main_container)
 
 ft.app(target=main)
