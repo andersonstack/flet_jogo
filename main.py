@@ -57,7 +57,8 @@ def main(page: ft.Page):
                 main_container_teclado
             ],
             alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
-            expand=True
+            expand=True,
+            horizontal_alignment=ft.CrossAxisAlignment.CENTER
             
         ),
     )
