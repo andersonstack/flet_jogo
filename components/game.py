@@ -306,7 +306,7 @@ def keyboard(page: ft.Page, theme="Frutas", reset_game=None):
             ft.IconButton(
                 icon=ft.icons.REPLAY,
                 icon_color=ft.colors.WHITE,
-                visible=True,
+                visible=False,
                 on_click=restart_game
             )
         ]

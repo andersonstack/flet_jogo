@@ -57,7 +57,7 @@ def main(page: ft.Page):
                 theme_game(page, reset_game),
                 keyboard(page, theme=current_theme, reset_game=reset_game),
             ],
-            alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+            alignment=ft.MainAxisAlignment.SPACE_AROUND,
             expand=True,
             horizontal_alignment=ft.CrossAxisAlignment.CENTER,
         ),
