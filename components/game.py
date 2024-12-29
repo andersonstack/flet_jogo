@@ -315,8 +315,11 @@ def keyboard(page: ft.Page, theme="Frutas", reset_game=None):
     return ft.Container(
         opacity=0.8,
         padding=10,
+        expand=True,
         content=ft.Column(
             alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+            scroll=ft.ScrollMode.ALWAYS,
+            expand=True,
             horizontal_alignment=ft.CrossAxisAlignment.CENTER,
             controls=[
                 main_container_gamer,
@@ -334,6 +337,6 @@ def keyboard(page: ft.Page, theme="Frutas", reset_game=None):
                             value=f"Dicas: {dicas}",)
                     ]
                 )
-            ]
+            ],
         ),
     )
