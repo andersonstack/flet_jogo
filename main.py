@@ -24,7 +24,7 @@ def main(page: ft.Page):
         padding=ft.padding.only(left=10, right=10),
         content=ft.Column(
             controls=[
-                theme_game(),
+                theme_game(page),
                 gamer(),
                 word(),
                 keyboard()
