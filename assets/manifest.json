@@ -1,0 +1,9 @@
+{
+    "name": "Jogo da forca",
+    "short_name": "Jogos",
+    "start_url": "",
+    "display": "standalone",
+    "theme_color": "#FFFFFF",
+    "description": "Jogo da forca",
+    "orientation": "natural"
+}
