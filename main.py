@@ -35,7 +35,7 @@ def main(page: ft.Page):
             controls=[
                 theme_game(page),
                 gamer(),
-                keyboard()
+                keyboard(page)
             ],
             alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
             expand=True,

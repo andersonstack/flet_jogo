@@ -7,10 +7,10 @@ lista_word = [
     "ABACAXI",
 ]
 
-choice = choice(lista_word).upper()
+choiced = choice(lista_word).upper()
 
 
-def keyboard():
+def keyboard(page: ft.Page):
 
     def discover (letter):
         return ft.Container(
@@ -29,16 +29,26 @@ def keyboard():
                 ),
             alignment=ft.alignment.center,
         )
+    
+    def valitade(e):
+        right = False
+
+        for pos, letter in enumerate(choiced):
+            if e.control.content.value == letter:
+                word.controls[pos] = discover(letter)
+                right = True
+
+        word.update()
+
+        e.control.disabled = True
+        e.control.content.color = ft.colors.PRIMARY
+        e.control.update()
+        page.update()
 
     word = ft.Row(
         alignment=ft.MainAxisAlignment.CENTER,
         controls=[
-            ft.Text(
-                value="_",
-                color=ft.colors.WHITE,
-                size=25,
-                weight=ft.FontWeight.BOLD
-            )
+            discover('_') for _ in choiced
         ]
     )
 
@@ -56,6 +66,7 @@ def keyboard():
             weight=ft.FontWeight.BOLD
             ),
         alignment=ft.alignment.center,
+        on_click=valitade,
         ) for letter in string.ascii_uppercase
     ]
 
