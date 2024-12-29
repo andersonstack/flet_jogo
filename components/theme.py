@@ -15,7 +15,7 @@ def theme_game(page: ft.Page):
                 color=ft.colors.WHITE,
                 size=30,
                 weight=ft.FontWeight.BOLD,
-                font_family='Poppins',
+                font_family="MADE_TOMMY_BOLD",
             ),
             ft.IconButton(
                 icon=ft.icons.CHANGE_CIRCLE,

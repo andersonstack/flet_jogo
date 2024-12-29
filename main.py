@@ -16,6 +16,11 @@ def main(page: ft.Page):
             fit=ft.ImageFit.COVER
         )
     )
+    page.fonts = {
+        "MADE_TOMMY": "assets/fonts/MADE TOMMY Thin_PERSONAL USE.otf",
+        "MADE_TOMMY_REGULAR": "assets/fonts/MADE TOMMY Regular_PERSONAL USE.otf",
+        "MADE_TOMMY_BOLD": "assets/fonts/MADE TOMMY Bold_PERSONAL USE.otf",
+    }
 
 
     main_container = ft.Container(
