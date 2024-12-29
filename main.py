@@ -1,7 +1,6 @@
 import flet as ft
 from components.theme import theme_game
-from components.gamer import gamer
-from components.keyboard import keyboard
+from components.game import keyboard
 
 def main(page: ft.Page):
     # Configurações de tamanho e posição da tela

@@ -1,7 +1,6 @@
 import flet as ft
 import string
 from random import choice
-from components.gamer import gamer
 
 lista_word = [
     "ABACATE",
