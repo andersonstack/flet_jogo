@@ -138,10 +138,31 @@ list_countrys = [
 ]
 
 
-def keyboard(page: ft.Page, theme="Frutas"):
+def keyboard(page: ft.Page, theme="Frutas", reset_game=None):
     choiced = choice(list_fruits) if theme == "Frutas" else choice(list_countrys)
     global dicas
     dicas = 3 if len(choiced) >= 7 else 2 if len(choiced) >= 5 else 1
+
+    def restart_game(e):
+        print("BOTÃO CLICADO")
+        if reset_game:
+            # Resetando os componentes
+            word.controls = [discover('_') for _ in choiced]  # Resetando a palavra
+            character.src = "assets/imgs/forca_0.png"  # Resetando a imagem da forca
+            character.data = 0  # Resetando o número de tentativas erradas
+            main_container_gamer.controls[0].visible = False  # Ocultando a mensagem de vitória/derrota
+            main_container_gamer.controls[1].visible = True  # Mantendo o botão de reiniciar
+            dicas = 3 if len(choiced) >= 7 else 2 if len(choiced) >= 5 else 1  # Resetando as dicas
+            word.update()  # Atualizando a exibição da palavra
+            character.update()  # Atualizando a imagem da forca
+            # Resetar as teclas e seus estados
+            for button in main_container_teclas:
+                button.content.color = ft.colors.WHITE
+                button.disabled = False
+                button.update()
+            page.update()  # Atualizando a página
+
+    
 
     def discover(letter):
         return ft.Container(
@@ -190,8 +211,9 @@ def keyboard(page: ft.Page, theme="Frutas"):
             character.data += 1
 
             if character.data > 5:
-                main_container_gamer.visible = True
-                main_container_gamer.value = "YOU LOSE!"
+                main_container_gamer.controls[0].visible = True
+                main_container_gamer.controls[1].visible = True
+                main_container_gamer.controls[0].value = "YOU LOSE!"
                 main_container_gamer.update()
 
             miss = character.data
@@ -204,8 +226,9 @@ def keyboard(page: ft.Page, theme="Frutas"):
         e.control.update()
 
         if all(c.content.value != '_' for c in word.controls):
-            main_container_gamer.visible = True
-            main_container_gamer.value = "YOU WIN!"
+            main_container_gamer.controls[0].visible = True
+            main_container_gamer.controls[1].visible = True
+            main_container_gamer.controls[0].value = "YOU WIN!"
             main_container_gamer.update()
 
         page.update()
@@ -268,14 +291,25 @@ def keyboard(page: ft.Page, theme="Frutas"):
         ),
     )
 
-    main_container_gamer = ft.Text(
-                    value="YOU WIN!",
-                    font_family="MADE_TOMMY_BOLD",
-                    color=ft.colors.WHITE,
-                    size=30,
-                    text_align=ft.TextAlign.CENTER,
-                    weight=ft.FontWeight.BOLD,
-                    visible=False
+    main_container_gamer = ft.Row(
+        alignment=ft.MainAxisAlignment.CENTER,
+        controls=[
+            ft.Text(
+                value="YOU WIN!",
+                font_family="MADE_TOMMY_BOLD",
+                color=ft.colors.WHITE,
+                size=30,
+                text_align=ft.TextAlign.CENTER,
+                weight=ft.FontWeight.BOLD,
+                visible=False
+            ),
+            ft.IconButton(
+                icon=ft.icons.REPLAY,
+                icon_color=ft.colors.WHITE,
+                visible=True,
+                on_click=restart_game
+            )
+        ]
     )
 
     return ft.Container(

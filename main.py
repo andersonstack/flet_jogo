@@ -55,7 +55,7 @@ def main(page: ft.Page):
         content=ft.Column(
             controls=[
                 theme_game(page, reset_game),
-                keyboard(page, theme=current_theme)
+                keyboard(page, theme=current_theme, reset_game=reset_game),
             ],
             alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
             expand=True,
