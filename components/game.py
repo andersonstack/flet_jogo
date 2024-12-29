@@ -148,10 +148,10 @@ def keyboard(page: ft.Page, theme="Frutas", reset_game=None):
         if reset_game:
             # Resetando os componentes
             word.controls = [discover('_') for _ in choiced]  # Resetando a palavra
-            character.src = "assets/imgs/forca_0.png"  # Resetando a imagem da forca
+            character.src = "images/forca_0.png"  # Resetando a imagem da forca
             character.data = 0  # Resetando o número de tentativas erradas
             main_container_gamer.controls[0].visible = False  # Ocultando a mensagem de vitória/derrota
-            main_container_gamer.controls[1].visible = True  # Mantendo o botão de reiniciar
+            main_container_gamer.controls[1].visible = False  # Mantendo o botão de reiniciar
             dicas = 3 if len(choiced) >= 7 else 2 if len(choiced) >= 5 else 1  # Resetando as dicas
             word.update()  # Atualizando a exibição da palavra
             character.update()  # Atualizando a imagem da forca
@@ -217,7 +217,7 @@ def keyboard(page: ft.Page, theme="Frutas", reset_game=None):
                 main_container_gamer.update()
 
             miss = character.data
-            character.src = f"assets/imgs/forca_{miss}.png"
+            character.src = f"images/forca_{miss}.png"
             character.update()
 
         word.update()
@@ -243,7 +243,7 @@ def keyboard(page: ft.Page, theme="Frutas", reset_game=None):
 
     character = ft.Image(
         data=0,
-        src="assets/imgs/forca_0.png",
+        src="images/forca_0.png",
         width=400,
         height=400,
     )

@@ -9,7 +9,7 @@ def theme_game(page: ft.Page, reset_game):
         if text == "Países":
             page.decoration = ft.BoxDecoration(
                 image=ft.DecorationImage(
-                    src="../assets/imgs/paises.png",
+                    src="images/paises.png",
                     fit=ft.ImageFit.COVER,
                 )
             )
@@ -21,7 +21,7 @@ def theme_game(page: ft.Page, reset_game):
         else:
             page.decoration = ft.BoxDecoration(
                 image=ft.DecorationImage(
-                    src="../assets/imgs/frutas.png",
+                    src="images/frutas.png",
                     fit=ft.ImageFit.COVER,
                 )
             )

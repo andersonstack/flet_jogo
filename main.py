@@ -10,14 +10,14 @@ def main(page: ft.Page):
     page.bgcolor = ft.colors.TRANSPARENT
     page.decoration = ft.BoxDecoration(
         image=ft.DecorationImage(
-            src="assets/imgs/frutas.png",
+            src="images/frutas.png",
             fit=ft.ImageFit.COVER
         )
     )
     page.fonts = {
-        "MADE_TOMMY": "assets/fonts/MADE TOMMY Thin_PERSONAL USE.otf",
-        "MADE_TOMMY_REGULAR": "assets/fonts/MADE TOMMY Regular_PERSONAL USE.otf",
-        "MADE_TOMMY_BOLD": "assets/fonts/MADE TOMMY Bold_PERSONAL USE.otf",
+        "MADE_TOMMY": "fonts/MADE TOMMY Thin_PERSONAL USE.otf",
+        "MADE_TOMMY_REGULAR": "fonts/MADE TOMMY Regular_PERSONAL USE.otf",
+        "MADE_TOMMY_BOLD": "fonts/MADE TOMMY Bold_PERSONAL USE.otf",
     }
     page.theme = ft.Theme(
         color_scheme=ft.ColorScheme(
@@ -66,4 +66,4 @@ def main(page: ft.Page):
     # Adiciona o container à página
     page.add(main_container)
 
-ft.app(target=main)
+ft.app(target=main, assets_dir="assets")
