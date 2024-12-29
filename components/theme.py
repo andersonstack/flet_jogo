@@ -6,6 +6,22 @@ def theme_game(page: ft.Page):
         text = e.control.parent.controls[0].value
         text = "Países" if text == "Frutas" else "Frutas"
         e.control.parent.controls[0].value = text
+        if (text == "Países"):
+                page.decoration = ft.BoxDecoration(
+                image = ft.DecorationImage(
+                    src="../assets/imgs/paises.png",
+                    fit=ft.ImageFit.COVER
+                    )
+                )
+
+        elif (text == "Frutas"):
+                page.decoration = ft.BoxDecoration(
+                image = ft.DecorationImage(
+                    src="../assets/imgs/frutas.png",
+                    fit=ft.ImageFit.COVER
+                    )
+                )
+
         page.update()
 
     return ft.Row(

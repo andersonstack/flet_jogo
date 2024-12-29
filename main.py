@@ -12,7 +12,7 @@ def main(page: ft.Page):
     page.bgcolor = ft.colors.TRANSPARENT
     page.decoration = ft.BoxDecoration(
         image = ft.DecorationImage(
-            src="assets/imgs/gradient.png",
+            src="assets/imgs/frutas.png",
             fit=ft.ImageFit.COVER
         )
     )
