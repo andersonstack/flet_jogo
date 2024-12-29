@@ -22,11 +22,19 @@ def keyboard():
 
     return ft.Container(
         margin=ft.margin.only(bottom=50),
+        opacity=0.8,
+        shadow=ft.BoxShadow(
+            blur_radius=20,
+            spread_radius=20,
+            color=ft.colors.PRIMARY,
+        ),
+        border_radius=10,
+        padding=10,
         content= ft.Row (
+            expand=True,
             wrap=True,
             alignment=ft.MainAxisAlignment.CENTER,
             vertical_alignment=ft.CrossAxisAlignment.CENTER,
-            expand=True,
             controls=main_container_teclas
         )
     )

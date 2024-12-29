@@ -41,8 +41,7 @@ def main(page: ft.Page):
             ],
             alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
             expand=True,
-            horizontal_alignment=ft.CrossAxisAlignment.CENTER
-            
+            horizontal_alignment=ft.CrossAxisAlignment.CENTER,            
         ),
     )
 
