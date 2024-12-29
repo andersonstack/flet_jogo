@@ -219,6 +219,8 @@ list_countrys = [
 
 def keyboard(page: ft.Page, theme="Frutas"):
     choiced = choice(list_fruits) if theme == "Frutas" else choice(list_countrys)
+    global dicas
+    dicas = 3 if len(choiced) >= 7 else 2 if len(choiced) >= 5 else 1
 
     def discover(letter):
         return ft.Container(
@@ -237,6 +239,24 @@ def keyboard(page: ft.Page, theme="Frutas"):
             alignment=ft.alignment.center,
         )
 
+    def tip(e):
+        global dicas
+        if dicas == 0:
+            e.control.disabled = True
+            return
+
+        letter_to_reveal = choice(choiced)
+        
+        for pos, letter in enumerate(choiced):
+            if letter == letter_to_reveal:
+                word.controls[pos] = discover(letter)
+        
+        dicas -= 1
+        e.control.parent.controls[1].value = f"Dicas: {dicas}"
+        e.control.parent.controls[1].update()
+        
+        word.update()
+        
     def validate(e):
         right = False
 
@@ -247,6 +267,7 @@ def keyboard(page: ft.Page, theme="Frutas"):
 
         if not right:
             character.data += 1
+
             miss = character.data
             character.src = f"assets/imgs/forca_{miss}.png"
             character.update()
@@ -326,6 +347,17 @@ def keyboard(page: ft.Page, theme="Frutas"):
                 character,
                 word,
                 main_container_teclado,
+                ft.Row(
+                    controls=[
+                        ft.IconButton(
+                            icon=ft.icons.TIPS_AND_UPDATES,
+                            icon_color=ft.colors.WHITE,
+                            on_click=tip
+                        ),
+                        ft.Text(
+                            value=f"Dicas: {dicas}",)
+                    ]
+                )
             ]
         ),
     )
