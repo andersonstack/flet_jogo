@@ -1,5 +1,8 @@
 import flet as ft
-import string
+from components.theme import theme_game
+from components.gamer import gamer
+from components.word import word
+from components.keyboard import keyboard
 
 def main(page: ft.Page):
     # Configurações de tamanho e posição da tela
@@ -14,65 +17,6 @@ def main(page: ft.Page):
         )
     )
 
-    main_container_theme = ft.Text(
-        value="Jogo da Forca",
-        color=ft.colors.WHITE,
-        size=25,
-        weight=ft.FontWeight.BOLD,
-    )
-
-    main_container_game = ft.Container(
-        bgcolor=ft.colors.TRANSPARENT,
-        content=ft.Column(
-            controls=[
-                ft.Image(
-                    src="assets/imgs/forca_0.png",
-                    width=400,
-                    height=400
-                )
-            ]
-        ),
-    )
-
-    main_container_palavra = ft.Row(
-        alignment=ft.MainAxisAlignment.CENTER,
-        controls=[
-            ft.Text(
-                value="",
-                color=ft.colors.WHITE,
-                size=25,
-                weight=ft.FontWeight.BOLD
-            )
-        ]
-    )
-
-    main_container_teclas = [ ft.Container(
-        height=40,
-        width=40,
-        padding=5,
-        border_radius=20,
-        bgcolor='#cc9d65',
-        content=ft.Text(
-            value=letter,
-            color=ft.colors.WHITE,
-            size=15,
-            text_align=ft.TextAlign.CENTER,
-            weight=ft.FontWeight.BOLD
-            ),
-        alignment=ft.alignment.center,
-        ) for letter in string.ascii_uppercase
-    ]
-
-    main_container_teclado = ft.Container(
-        margin=ft.margin.only(bottom=50),
-        content= ft.Row (
-            wrap=True,
-            alignment=ft.MainAxisAlignment.CENTER,
-            vertical_alignment=ft.CrossAxisAlignment.CENTER,
-            expand=True,
-            controls=main_container_teclas
-        )
-    )
 
     main_container = ft.Container(
         alignment=ft.alignment.center,
@@ -80,10 +24,10 @@ def main(page: ft.Page):
         padding=ft.padding.only(left=10, right=10),
         content=ft.Column(
             controls=[
-                main_container_theme,
-                main_container_game,
-                main_container_palavra,
-                main_container_teclado
+                theme_game(),
+                gamer(),
+                word(),
+                keyboard()
             ],
             alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
             expand=True,

@@ -9,7 +9,6 @@ __pycache__/
 
 # Extensões C
 *.então
-
 # Distribuição / embalagem
 .Píton
 construir/
