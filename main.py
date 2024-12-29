@@ -1,5 +1,5 @@
 import flet as ft
-from math import pi
+import string
 
 def main(page: ft.Page):
     # Configurações de tamanho e posição da tela
@@ -22,28 +22,40 @@ def main(page: ft.Page):
     )
 
     main_container_game = ft.Container(
-        bgcolor=ft.colors.OUTLINE_VARIANT,
+        bgcolor=ft.colors.TRANSPARENT,
         content=ft.Column(
-            [
-                ft.Text(
-                    value="Container da forca",
-                    color=ft.colors.WHITE,
-                    size=25,
-                    weight=ft.FontWeight.BOLD,),
+            controls=[
+                ft.Image(
+                    src="assets/imgs/forca_0.png",
+                    width=400,
+                    height=400
+                )
             ]
         ),
     )
 
+    main_container_teclas = [ ft.Container(
+        height=25,
+        width=25,
+        padding=5,
+        content=ft.Text(
+            value=letter,
+            color=ft.colors.WHITE,
+            size=15,
+            text_align=ft.TextAlign.CENTER,
+            weight=ft.FontWeight.BOLD
+            )
+        ) for letter in string.ascii_uppercase
+    ]
+
     main_container_teclado = ft.Container(
-        content=ft.Column(
-            [
-                ft.Text(
-                    value="Container do teclado",
-                    color=ft.colors.WHITE,
-                    size=25,
-                    weight=ft.FontWeight.BOLD,),
-            ]
-        ),
+        content= ft.Row (
+            wrap=True,
+            alignment=ft.MainAxisAlignment.CENTER,
+            vertical_alignment=ft.CrossAxisAlignment.CENTER,
+            expand=True,
+            controls=main_container_teclas
+        )
     )
 
     main_container = ft.Container(
