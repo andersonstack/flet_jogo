@@ -1,6 +1,7 @@
 import flet as ft
 import string
 from random import choice
+from components.gamer import gamer
 
 lista_word = [
     "ABACATE",
@@ -9,8 +10,8 @@ lista_word = [
 
 choiced = choice(lista_word).upper()
 
-
 def keyboard(page: ft.Page):
+    global data
 
     def discover (letter):
         return ft.Container(
@@ -18,11 +19,12 @@ def keyboard(page: ft.Page):
             width=40,
             padding=5,
             border_radius=20,
-            bgcolor=ft.colors.PRIMARY,
+            bgcolor=ft.colors.WHITE,
+            margin=ft.margin.only(bottom=50),
             content=ft.Text(
                 value=letter,
                 font_family="MADE_TOMMY_BOLD",
-                color=ft.colors.WHITE,
+                color=ft.colors.BLACK,
                 size=15,
                 text_align=ft.TextAlign.CENTER,
                 weight=ft.FontWeight.BOLD
@@ -37,6 +39,12 @@ def keyboard(page: ft.Page):
             if e.control.content.value == letter:
                 word.controls[pos] = discover(letter)
                 right = True
+        
+        if not right:
+            character.data += 1
+            miss = character.data
+            character.src = f"assets/imgs/forca_{miss}.png"
+            character.update()
 
         word.update()
 
@@ -51,6 +59,14 @@ def keyboard(page: ft.Page):
             discover('_') for _ in choiced
         ]
     )
+
+    character = ft.Image(
+        data=0,
+        src="assets/imgs/forca_0.png",
+        width=400,
+        height=400
+    )
+
 
     main_container_teclas = [ ft.Container(
         height=40,
@@ -69,21 +85,21 @@ def keyboard(page: ft.Page):
         on_click=valitade,
         ) for letter in string.ascii_uppercase
     ]
+    
 
-    return ft.Container(
+    main_container_teclado = ft.Container(
         margin=ft.margin.only(bottom=50),
         opacity=0.8,
+        padding=5,
         shadow=ft.BoxShadow(
             blur_radius=20,
             spread_radius=20,
             color=ft.colors.PRIMARY,
         ),
         border_radius=10,
-        padding=10,
         content= ft.Column(
-            alignment=ft.MainAxisAlignment.SPACE_EVENLY,
+            alignment=ft.MainAxisAlignment.SPACE_AROUND,
             controls = [
-                word,
                 ft.Row (
                 expand=True,
                 wrap=True,
@@ -91,6 +107,21 @@ def keyboard(page: ft.Page):
                 vertical_alignment=ft.CrossAxisAlignment.CENTER,
                 controls=main_container_teclas
                 )
+            ]
+        )
+    )
+
+    return ft.Container(
+        opacity=0.8,
+        padding=10,
+        content= ft.Column(
+            expand=True,
+            alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+            horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+            controls = [
+                character,
+                word,
+                main_container_teclado,
             ]
         )
     )
