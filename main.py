@@ -34,21 +34,37 @@ def main(page: ft.Page):
         ),
     )
 
+    main_container_palavra = ft.Row(
+        alignment=ft.MainAxisAlignment.CENTER,
+        controls=[
+            ft.Text(
+                value="",
+                color=ft.colors.WHITE,
+                size=25,
+                weight=ft.FontWeight.BOLD
+            )
+        ]
+    )
+
     main_container_teclas = [ ft.Container(
-        height=25,
-        width=25,
+        height=40,
+        width=40,
         padding=5,
+        border_radius=20,
+        bgcolor='#cc9d65',
         content=ft.Text(
             value=letter,
             color=ft.colors.WHITE,
             size=15,
             text_align=ft.TextAlign.CENTER,
             weight=ft.FontWeight.BOLD
-            )
+            ),
+        alignment=ft.alignment.center,
         ) for letter in string.ascii_uppercase
     ]
 
     main_container_teclado = ft.Container(
+        margin=ft.margin.only(bottom=50),
         content= ft.Row (
             wrap=True,
             alignment=ft.MainAxisAlignment.CENTER,
@@ -66,6 +82,7 @@ def main(page: ft.Page):
             controls=[
                 main_container_theme,
                 main_container_game,
+                main_container_palavra,
                 main_container_teclado
             ],
             alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
