@@ -2,17 +2,21 @@ import flet as ft
 import string
 from random import choice
 
-lista_word = [
+list_fruit = [
     "ABACATE",
-    "ABACAXI",
+    "BANANA",
+    "LARANJA",
+]
+list_country = [
+    "BRASIL",
+    "CANADA",
+    "MEXICO",
 ]
 
-choiced = choice(lista_word).upper()
+def keyboard(page: ft.Page, theme="Frutas"):
+    choiced = choice(list_fruit) if theme == "Frutas" else choice(list_country)
 
-def keyboard(page: ft.Page):
-    global data
-
-    def discover (letter):
+    def discover(letter):
         return ft.Container(
             height=40,
             width=40,
@@ -26,19 +30,19 @@ def keyboard(page: ft.Page):
                 color=ft.colors.BLACK,
                 size=15,
                 text_align=ft.TextAlign.CENTER,
-                weight=ft.FontWeight.BOLD
-                ),
+                weight=ft.FontWeight.BOLD,
+            ),
             alignment=ft.alignment.center,
         )
-    
-    def valitade(e):
+
+    def validate(e):
         right = False
 
         for pos, letter in enumerate(choiced):
             if e.control.content.value == letter:
                 word.controls[pos] = discover(letter)
                 right = True
-        
+
         if not right:
             character.data += 1
             miss = character.data
@@ -46,7 +50,6 @@ def keyboard(page: ft.Page):
             character.update()
 
         word.update()
-
         e.control.disabled = True
         e.control.content.color = ft.colors.PRIMARY
         e.control.update()
@@ -63,28 +66,27 @@ def keyboard(page: ft.Page):
         data=0,
         src="assets/imgs/forca_0.png",
         width=400,
-        height=400
+        height=400,
     )
 
-
-    main_container_teclas = [ ft.Container(
-        height=40,
-        width=40,
-        padding=5,
-        border_radius=20,
-        bgcolor=ft.colors.PRIMARY,
-        content=ft.Text(
-            value=letter,
-            color=ft.colors.WHITE,
-            size=15,
-            text_align=ft.TextAlign.CENTER,
-            weight=ft.FontWeight.BOLD
+    main_container_teclas = [
+        ft.Container(
+            height=40,
+            width=40,
+            padding=5,
+            border_radius=20,
+            bgcolor=ft.colors.PRIMARY,
+            content=ft.Text(
+                value=letter,
+                color=ft.colors.WHITE,
+                size=15,
+                text_align=ft.TextAlign.CENTER,
+                weight=ft.FontWeight.BOLD,
             ),
-        alignment=ft.alignment.center,
-        on_click=valitade,
+            alignment=ft.alignment.center,
+            on_click=validate,
         ) for letter in string.ascii_uppercase
     ]
-    
 
     main_container_teclado = ft.Container(
         margin=ft.margin.only(bottom=50),
@@ -96,31 +98,31 @@ def keyboard(page: ft.Page):
             color=ft.colors.PRIMARY,
         ),
         border_radius=10,
-        content= ft.Column(
+        content=ft.Column(
             alignment=ft.MainAxisAlignment.SPACE_AROUND,
-            controls = [
-                ft.Row (
-                expand=True,
-                wrap=True,
-                alignment=ft.MainAxisAlignment.CENTER,
-                vertical_alignment=ft.CrossAxisAlignment.CENTER,
-                controls=main_container_teclas
+            controls=[
+                ft.Row(
+                    expand=True,
+                    wrap=True,
+                    alignment=ft.MainAxisAlignment.CENTER,
+                    vertical_alignment=ft.CrossAxisAlignment.CENTER,
+                    controls=main_container_teclas,
                 )
             ]
-        )
+        ),
     )
 
     return ft.Container(
         opacity=0.8,
         padding=10,
-        content= ft.Column(
+        content=ft.Column(
             expand=True,
             alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
             horizontal_alignment=ft.CrossAxisAlignment.CENTER,
-            controls = [
+            controls=[
                 character,
                 word,
                 main_container_teclado,
             ]
-        )
+        ),
     )

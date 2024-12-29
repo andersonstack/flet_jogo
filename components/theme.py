@@ -1,37 +1,37 @@
 import flet as ft
 
-
-def theme_game(page: ft.Page):
+def theme_game(page: ft.Page, reset_game):
     def change_theme(e):
         text = e.control.parent.controls[0].value
         text = "Países" if text == "Frutas" else "Frutas"
         e.control.parent.controls[0].value = text
-        if (text == "Países"):
-                page.decoration = ft.BoxDecoration(
-                image = ft.DecorationImage(
+
+        if text == "Países":
+            page.decoration = ft.BoxDecoration(
+                image=ft.DecorationImage(
                     src="../assets/imgs/paises.png",
-                    fit=ft.ImageFit.COVER
-                    )
+                    fit=ft.ImageFit.COVER,
                 )
-                page.theme = ft.Theme(
-                      color_scheme=ft.ColorScheme(
-                          primary="#75c4d4",
-                      )
+            )
+            page.theme = ft.Theme(
+                color_scheme=ft.ColorScheme(
+                    primary="#75c4d4",
                 )
-
-        elif (text == "Frutas"):
-                page.decoration = ft.BoxDecoration(
-                image = ft.DecorationImage(
+            )
+        else:
+            page.decoration = ft.BoxDecoration(
+                image=ft.DecorationImage(
                     src="../assets/imgs/frutas.png",
-                    fit=ft.ImageFit.COVER
-                    )
+                    fit=ft.ImageFit.COVER,
                 )
-                page.theme =  ft.Theme(
-                    color_scheme=ft.ColorScheme(
-                        primary="#cc9d65",
-                    )
+            )
+            page.theme = ft.Theme(
+                color_scheme=ft.ColorScheme(
+                    primary="#cc9d65",
                 )
+            )
 
+        reset_game(text)
         page.update()
 
     return ft.Row(
