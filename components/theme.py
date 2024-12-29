@@ -13,12 +13,22 @@ def theme_game(page: ft.Page):
                     fit=ft.ImageFit.COVER
                     )
                 )
+                page.theme = ft.Theme(
+                      color_scheme=ft.ColorScheme(
+                          primary="#75c4d4",
+                      )
+                )
 
         elif (text == "Frutas"):
                 page.decoration = ft.BoxDecoration(
                 image = ft.DecorationImage(
                     src="../assets/imgs/frutas.png",
                     fit=ft.ImageFit.COVER
+                    )
+                )
+                page.theme =  ft.Theme(
+                    color_scheme=ft.ColorScheme(
+                        primary="#cc9d65",
                     )
                 )
 

@@ -8,7 +8,7 @@ def keyboard():
         width=40,
         padding=5,
         border_radius=20,
-        bgcolor='#cc9d65',
+        bgcolor=ft.colors.PRIMARY,
         content=ft.Text(
             value=letter,
             color=ft.colors.WHITE,

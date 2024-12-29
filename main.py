@@ -21,6 +21,11 @@ def main(page: ft.Page):
         "MADE_TOMMY_REGULAR": "assets/fonts/MADE TOMMY Regular_PERSONAL USE.otf",
         "MADE_TOMMY_BOLD": "assets/fonts/MADE TOMMY Bold_PERSONAL USE.otf",
     }
+    page.theme =  ft.Theme(
+        color_scheme=ft.ColorScheme(
+            primary="#cc9d65",
+        )
+    )
 
 
     main_container = ft.Container(
