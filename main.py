@@ -1,7 +1,6 @@
 import flet as ft
 from components.theme import theme_game
 from components.gamer import gamer
-from components.word import word
 from components.keyboard import keyboard
 
 def main(page: ft.Page):
@@ -36,7 +35,6 @@ def main(page: ft.Page):
             controls=[
                 theme_game(page),
                 gamer(),
-                word(),
                 keyboard()
             ],
             alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
