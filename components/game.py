@@ -144,7 +144,6 @@ def keyboard(page: ft.Page, theme="Frutas", reset_game=None):
     dicas = 3 if len(choiced) >= 7 else 2 if len(choiced) >= 5 else 1
 
     def restart_game(e):
-        print("BOTÃO CLICADO")
         if reset_game:
             # Resetando os componentes
             word.controls = [discover('_') for _ in choiced]  # Resetando a palavra
@@ -152,6 +151,7 @@ def keyboard(page: ft.Page, theme="Frutas", reset_game=None):
             character.data = 0  # Resetando o número de tentativas erradas
             main_container_gamer.controls[0].visible = False  # Ocultando a mensagem de vitória/derrota
             main_container_gamer.controls[1].visible = False  # Mantendo o botão de reiniciar
+            choiced = choice(list_fruits) if theme == "Frutas" else choice(list_countrys)
             dicas = 3 if len(choiced) >= 7 else 2 if len(choiced) >= 5 else 1  # Resetando as dicas
             word.update()  # Atualizando a exibição da palavra
             character.update()  # Atualizando a imagem da forca
